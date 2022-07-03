@@ -5,19 +5,21 @@ export const AppDataSourceUseCases = {
         type: "postgres",
         host: "localhost",
         port: 5432,
-        username: "test",
-        password: "test",
-        database: "test",
+        username: "postgres",
+        password: "postgres",
+        database: "postgres",
         synchronize: true,
         logging: true,
         entities: ['Category'],
         subscribers: [],
         migrations: [],
     }),
-    createConnection(): void {
-        this.AppDataSource.initialize().then(() => {
+    createConnection: async function (): Promise<void> {
+        try {
+            await this.AppDataSource.initialize()
             console.log("DB connected!");
-        }).catch(err => console.log(err))
-
+        } catch (error) {
+            console.log(`Fail to connect DB - Error: ${error}`);
+        }
     }
 }
