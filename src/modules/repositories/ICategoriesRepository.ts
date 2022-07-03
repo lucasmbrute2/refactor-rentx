@@ -9,5 +9,4 @@ export interface ICategoriesRepository {
     findByName(name: string): Promise<Category>
     list(): Promise<Category[]>
     createCategory({ name, description }: ICategoriesDTO): Promise<void>
-
 }
