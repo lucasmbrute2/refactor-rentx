@@ -1,8 +1,8 @@
-import { Entity, Column, PrimaryColumn, CreateDateColumn } from "typeorm"
+import { Entity, Column, CreateDateColumn, PrimaryGeneratedColumn } from "typeorm"
 
-@Entity()
+@Entity("Category")
 export class Category {
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id?: string;
 
     @Column()
