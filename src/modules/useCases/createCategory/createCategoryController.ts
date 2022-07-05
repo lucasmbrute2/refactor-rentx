@@ -1,6 +1,5 @@
-import { Request, response, Response } from "express"
+import { Request, Response } from "express"
 import { CreateCategoryUseCase } from "../createCategory/createCategoryUseCase"
-
 
 export class CreateCategoryController {
     constructor(private createCategoryUseCase: CreateCategoryUseCase) { }
@@ -9,12 +8,11 @@ export class CreateCategoryController {
         const { name, description } = req.body;
 
         try {
-            this.createCategoryUseCase.execute({ name, description })
-
+            await this.createCategoryUseCase.execute({ name, description });
         } catch (error) {
-            response.status(500).send({ error })
+            res.status(400).send({ error });
         }
-        return response.status(201).send();
+        return res.status(201).send();
     }
 
 }
