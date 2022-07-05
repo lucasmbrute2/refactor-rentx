@@ -8,7 +8,7 @@
 4 - Example: ``docker build -t rentx .``
 
 
-## Commands:
+## Docker commands:
 
 1 - docker ps (list all containers)
 2 - docker run -p "port":"port" "image name" (start container)
@@ -19,3 +19,7 @@
 7 - docker rm (id do container)
 8 - docker start (id do container)
 9 - docker-compose up --force-recreate
+
+## Typeorm commands:
+
+1 - typeorm migration:create "path"
