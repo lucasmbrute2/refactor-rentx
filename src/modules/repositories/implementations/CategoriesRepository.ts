@@ -1,13 +1,13 @@
 import { Category } from "../../entities/Category";
 import { ICategoriesDTO, ICategoriesRepository } from "../ICategoriesRepository";
-import { AppDataSourceUseCases } from "../../../database/data-source"
+import { AppDataSource } from "../../../database/data-source"
 import { Repository } from "typeorm";
 
 export class CategoriesRepository implements ICategoriesRepository {
     private repository: Repository<Category>;
 
     constructor() {
-        this.repository = AppDataSourceUseCases.AppDataSource.getRepository(Category);
+        this.repository = AppDataSource.getRepository(Category);
     }
 
     async list(): Promise<Category[]> {
@@ -26,6 +26,8 @@ export class CategoriesRepository implements ICategoriesRepository {
 
     async findByName(name: string): Promise<Category> {
         const category = await this.repository.findOneBy({ name })
+
+        if (!category) throw "Has no category with this name"
         return category
     }
 
