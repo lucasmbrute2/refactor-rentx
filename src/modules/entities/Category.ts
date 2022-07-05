@@ -6,12 +6,12 @@ export class Category {
     id?: string;
 
     @Column()
-    name: string;
+    name!: string;
 
     @Column()
-    description: string;
+    description!: string;
 
     @CreateDateColumn()
-    created_at: string;
+    created_at!: string;
 
 }
