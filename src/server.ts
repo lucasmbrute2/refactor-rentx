@@ -1,12 +1,12 @@
-import "reflect-metadata"
+import "reflect-metadata";
 import express from "express";
-import { AppDataSourceUseCases } from "./database/data-source";
+import { createConnection } from "./database/data-source";
 import { router } from "./routes/index"
 const app = express();
 app.use(express.json());
 app.use(router);
 
-AppDataSourceUseCases.createConnection();
+createConnection();
 const PORT = 3333
 
 app.listen(PORT, () => {
