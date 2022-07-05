@@ -31,6 +31,6 @@
     "scripts": {
         "dev": "ts-node-dev --inspect --ignore-watch node_modules --respawn --transpile-only src/server.ts",
         "build": "tsc",
-        "typeorm": "typeorm-ts-node-esm"
+        "typeorm": "typeorm-ts-node-commonjs"
     }
 }
