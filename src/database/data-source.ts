@@ -1,4 +1,5 @@
 import { DataSource } from "typeorm";
+import { Category } from "../modules/entities/Category"
 
 export const AppDataSourceUseCases = {
     AppDataSource: new DataSource({
@@ -10,7 +11,7 @@ export const AppDataSourceUseCases = {
         database: "postgres",
         synchronize: true,
         logging: true,
-        entities: ['Category'],
+        entities: [Category],
         subscribers: [],
         migrations: [],
     }),
