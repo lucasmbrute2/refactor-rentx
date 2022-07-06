@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createSpecificationUseCase } from "./createSpecificationUseCase";
+import { CreateSpecificationUseCase } from "./createSpecificationUseCase";
 
 interface IRequest {
     req: Request;
@@ -7,7 +7,7 @@ interface IRequest {
 }
 
 export class CreateSpecificationController {
-    constructor(private createSpecificationUseCase: createSpecificationUseCase) { }
+    constructor(private createSpecificationUseCase: CreateSpecificationUseCase) { }
 
     async handle({ req, res }: IRequest) {
 

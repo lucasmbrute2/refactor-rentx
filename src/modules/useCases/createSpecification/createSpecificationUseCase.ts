@@ -1,6 +1,6 @@
 import { ICreateSpecificationDTO, ISpecificationRepository } from "../../repositories/ISpecificationReposity";
 
-export class createSpecificationUseCase {
+export class CreateSpecificationUseCase {
     constructor(private categoriesRepository: ISpecificationRepository) { }
 
     async execute({ name, description }: ICreateSpecificationDTO) {
