@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity("Specification")
 export class Specification {
@@ -12,6 +12,6 @@ export class Specification {
     @Column()
     description!: string;
 
-    @Column()
-    created_at!: Date;
+    @CreateDateColumn()
+    created_at!: string;
 }
