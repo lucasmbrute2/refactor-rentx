@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import { Category } from "../modules/entities/Category"
+import { Specification } from "../modules/entities/Specification";
 import { CreateCategories1654826967781 } from "./migrations/1656986536350-migrations"
 
 
@@ -12,7 +13,7 @@ export const AppDataSource = new DataSource({
     database: "postgres",
     synchronize: true,
     logging: true,
-    entities: [Category],
+    entities: [Category, Specification],
     subscribers: [],
     migrations: [CreateCategories1654826967781],
 })
