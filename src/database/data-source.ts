@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 import { Category } from "../modules/entities/Category"
 import { Specification } from "../modules/entities/Specification";
 import { CreateCategories1654826967781 } from "./migrations/1656986536350-migrations"
-
+import { migrations1657165082853 } from "./migrations/1657165082853-migrations"
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -15,7 +15,7 @@ export const AppDataSource = new DataSource({
     logging: true,
     entities: [Category, Specification],
     subscribers: [],
-    migrations: [CreateCategories1654826967781],
+    migrations: [CreateCategories1654826967781, migrations1657165082853],
 })
 export async function createConnection(): Promise<void> {
     try {
