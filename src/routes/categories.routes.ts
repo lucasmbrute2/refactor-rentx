@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { CreateCategoryController } from "../modules/useCases/createCategory/createCategoryController"
-import { listCategoriesController } from "../modules/useCases/listCategories/index"
+import { ListCategoriesController } from "../modules/useCases/listCategories/listCategoriesController"
 import { ImportCategoryController } from "../modules/useCases/importCategory/importCategoryController"
 import multer from "multer"
 
@@ -11,11 +11,10 @@ const upload = multer({
 
 const createCategoryController = new CreateCategoryController()
 const importCategoryController = new ImportCategoryController()
+const listCategoriesController = new ListCategoriesController()
 categoriesRouter.post("/", createCategoryController.handle)
 
-categoriesRouter.get("/", (req, res) => {
-    return listCategoriesController.handle(req, res)
-})
+categoriesRouter.get("/", listCategoriesController.handle)
 
 categoriesRouter.post("/import", upload.single("file"), importCategoryController.handle)
 
