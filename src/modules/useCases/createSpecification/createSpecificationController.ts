@@ -1,20 +1,15 @@
 import { Request, Response } from "express";
-import { CreateSpecificationUseCase } from "./createSpecificationUseCase";
+import { container } from "tsyringe";
+import { CreateSpecificationUseCase } from "../createSpecification/createSpecificationUseCase"
 
-interface IRequest {
-    req: Request;
-    res: Response;
-}
 
 export class CreateSpecificationController {
-    constructor(private createSpecificationUseCase: CreateSpecificationUseCase) { }
-
-    async handle({ req, res }: IRequest) {
-
+    async handle(req: Request, res: Response) {
         const { name, description } = req.body
 
+        const createSpecificationUseCase = container.resolve(CreateSpecificationUseCase)
         try {
-            await this.createSpecificationUseCase.execute({
+            await createSpecificationUseCase.execute({
                 name,
                 description
             })
