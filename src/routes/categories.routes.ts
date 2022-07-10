@@ -9,7 +9,9 @@ const createCategoryController = new CreateCategoryController()
 const importCategoryController = new ImportCategoryController()
 categoriesRouter.post("/", createCategoryController.handle)
 
-categoriesRouter.get("/",)
+categoriesRouter.get("/", (req, res) => {
+    return listCategoriesController.handle(req, res)
+})
 
 categoriesRouter.post("/import", importCategoryController.handle)
 
