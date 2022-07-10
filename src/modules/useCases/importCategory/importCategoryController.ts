@@ -9,7 +9,7 @@ export class ImportCategoryController {
 
         if (!file) return res.status(404).send()
 
-        importCategoryUseCase.execute(file)
+        await importCategoryUseCase.execute(file)
 
         return res.send({
             message: "File imported with success!"
