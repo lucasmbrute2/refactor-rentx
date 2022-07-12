@@ -21,9 +21,9 @@ export class User {
     driver_license!: string;
 
     @Column()
-    isAdmin!: boolean;
+    isAdmin?: boolean;
 
     @Column()
-    created_at!: Date;
+    created_at?: Date;
 
 }
