@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
-import { Category } from "../modules/entities/Category"
-import { Specification } from "../modules/entities/Specification";
+import { Category } from "../modules/cars/entities/Category"
+import { Specification } from "../modules/cars/entities/Specification";
 import { CreateCategories1654826967781 } from "./migrations/1656986536350-migrations"
 import { migrations1657165082853 } from "./migrations/1657165082853-migrations"
 

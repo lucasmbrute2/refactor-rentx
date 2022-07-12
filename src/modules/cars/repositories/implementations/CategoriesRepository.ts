@@ -1,6 +1,6 @@
 import { Category } from "../../entities/Category";
 import { ICategoriesDTO, ICategoriesRepository } from "../ICategoriesRepository";
-import { AppDataSource } from "../../../database/data-source"
+import { AppDataSource } from "../../../../database/data-source"
 import { Repository } from "typeorm";
 
 export class CategoriesRepository implements ICategoriesRepository {
