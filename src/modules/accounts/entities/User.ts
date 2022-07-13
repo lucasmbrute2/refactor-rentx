@@ -1,6 +1,6 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
-@Entity()
+@Entity("User")
 export class User {
     @PrimaryGeneratedColumn()
     id?: number;
@@ -20,10 +20,10 @@ export class User {
     @Column()
     driver_license!: string;
 
-    @Column()
-    isAdmin?: boolean;
+    @Column('boolean', { default: false })
+    isAdmin?: boolean = false;
 
-    @Column()
-    created_at?: Date;
+    @CreateDateColumn()
+    created_at?: string;
 
 }
