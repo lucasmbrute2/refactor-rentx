@@ -3,14 +3,15 @@ import { User } from "../modules/accounts/entities/User";
 import { Category } from "../modules/cars/entities/Category"
 import { Specification } from "../modules/cars/entities/Specification";
 import { migrations } from "./migrations"
+import dontenv from "../configs/dotenvEntries"
 
 export const AppDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
     port: 5432,
-    username: "postgres",
-    password: "postgres",
-    database: "postgres",
+    username: dontenv.database.databaseUsername,
+    password: dontenv.database.databasePassword,
+    database: dontenv.database.databaseName,
     synchronize: true,
     logging: true,
     entities: [Category, Specification, User],
