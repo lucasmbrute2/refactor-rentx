@@ -3,8 +3,8 @@ services:
     postgres:
         image: postgres:10.5
         environment:
-            - POSTGRES_USER=postgres
-            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_USER=${DB_USERNAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
         logging:
             options:
                 max-size: 10m
