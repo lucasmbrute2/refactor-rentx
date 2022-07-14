@@ -11,7 +11,6 @@ app.use(router);
 createConnection();
 const PORT = 3333
 
-
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`)
 })
