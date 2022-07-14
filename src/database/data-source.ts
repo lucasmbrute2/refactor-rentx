@@ -16,7 +16,7 @@ export const AppDataSource = new DataSource({
     logging: true,
     entities: [Category, Specification, User],
     subscribers: [],
-    migrations: [...migrations],
+    migrations
 })
 export async function createConnection(): Promise<void> {
     try {
@@ -26,3 +26,5 @@ export async function createConnection(): Promise<void> {
         console.log(`Fail to connect DB - Error: ${error}`);
     }
 }
+
+
