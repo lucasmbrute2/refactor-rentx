@@ -17,9 +17,7 @@ export class CreateSpecificationController {
                 message: "Specification created with success!"
             })
         } catch (error) {
-            res.status(404).send({
-                message: `Fail: ${error}`
-            })
+            res.status(404).send(error)
         }
     }
 

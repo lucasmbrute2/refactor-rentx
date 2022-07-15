@@ -3,6 +3,7 @@ import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { compare } from "bcrypt"
 import { sign } from "jsonwebtoken"
 import dotenv from "../../../../configs/dotenvEntries"
+import { AppError } from "../../../../errors/AppError";
 
 interface IRequest {
     email: string;
@@ -26,10 +27,10 @@ export class AuthenticateUserUseCase {
 
     async execute({ email, password }: IRequest): Promise<IResponse> {
         const user = await this.usersRepository.findByEmail(email);
-        if (!user) throw "Email or password incorrect";
+        if (!user) throw new AppError("Email or password incorrect");
 
         const isPasswordCorrect = await compare(password, user.password);
-        if (!isPasswordCorrect) throw "Email or password incorrect"
+        if (!isPasswordCorrect) throw new AppError("Email or password incorrect");
 
 
         const token = sign({}, dotenv.token.md5Hash, {

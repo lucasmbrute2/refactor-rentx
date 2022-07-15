@@ -11,7 +11,7 @@ export class ListCategoriesController {
             const allCategories = await listCategoriesUseCase.execute()
             return res.json(allCategories)
         } catch (error) {
-            return res.status(404).send({ message: "Categories not found" })
+            return res.status(404).send(error)
         }
     }
 }
