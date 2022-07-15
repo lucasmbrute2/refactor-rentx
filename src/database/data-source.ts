@@ -26,5 +26,3 @@ export async function createConnection(): Promise<void> {
         console.log(`Fail to connect DB - Error: ${error}`);
     }
 }
-
-
