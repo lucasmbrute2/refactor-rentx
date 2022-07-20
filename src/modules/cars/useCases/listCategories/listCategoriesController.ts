@@ -8,11 +8,7 @@ export class ListCategoriesController {
 
         const listCategoriesUseCase = container.resolve(ListCategoriesUseCase)
 
-        try {
-            const allCategories = await listCategoriesUseCase.execute()
-            return res.json(allCategories)
-        } catch (error: any) {
-            throw new AppError(error.message);
-        }
+        const allCategories = await listCategoriesUseCase.execute()
+        return res.json(allCategories)
     }
 }
