@@ -7,12 +7,7 @@ export class AuthenticateUserController {
         const { email, password } = req.body
         const authUseCase = container.resolve(AuthenticateUserUseCase);
 
-        try {
-            const token = await authUseCase.execute({ email, password })
-            return res.status(201).json(token)
-
-        } catch (error) {
-            return res.status(404).json(error)
-        }
+        const token = await authUseCase.execute({ email, password })
+        return res.status(201).json(token)
     }
 }
