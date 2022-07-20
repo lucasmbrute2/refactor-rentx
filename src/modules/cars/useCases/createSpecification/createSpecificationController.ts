@@ -8,17 +8,15 @@ export class CreateSpecificationController {
         const { name, description } = req.body
 
         const createSpecificationUseCase = container.resolve(CreateSpecificationUseCase)
-        try {
-            await createSpecificationUseCase.execute({
-                name,
-                description
-            })
-            res.send({
-                message: "Specification created with success!"
-            })
-        } catch (error) {
-            res.status(404).send(error)
-        }
+
+        await createSpecificationUseCase.execute({
+            name,
+            description
+        })
+        return res.send({
+            message: "Specification created with success!"
+        })
+
     }
 
 }
