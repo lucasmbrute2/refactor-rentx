@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import { container } from "tsyringe";
+import { AppError } from "../../../../errors/AppError";
 import { ImportCategoryUseCase } from "../importCategory/importCategoryUseCase"
 
 export class ImportCategoryController {
@@ -7,7 +8,7 @@ export class ImportCategoryController {
         const { file } = req;
         const importCategoryUseCase = container.resolve(ImportCategoryUseCase)
 
-        if (!file) return res.status(404).send()
+        if (!file) throw new AppError("Missing file");
 
         await importCategoryUseCase.execute(file)
 
