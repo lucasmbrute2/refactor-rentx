@@ -1,6 +1,7 @@
 import { ListCategoriesUseCase } from "./listCategoriesUseCase";
 import { Request, Response } from "express"
 import { container } from "tsyringe";
+import { AppError } from "../../../../errors/AppError";
 
 export class ListCategoriesController {
     async handle(req: Request, res: Response): Promise<Response> {
@@ -10,8 +11,8 @@ export class ListCategoriesController {
         try {
             const allCategories = await listCategoriesUseCase.execute()
             return res.json(allCategories)
-        } catch (error) {
-            return res.status(404).send(error)
+        } catch (error: any) {
+            throw new AppError(error.message);
         }
     }
 }
