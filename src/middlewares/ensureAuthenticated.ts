@@ -22,6 +22,10 @@ export async function ensureAuthenticated(req: Request, res: Response, next: Nex
 
         if (!user) throw new AppError("User does not authenticated.");
 
+        req.user = {
+            id: user_id
+        };
+
         return next();
 
     } catch (error) {
