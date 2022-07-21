@@ -23,4 +23,7 @@ export class User {
     @CreateDateColumn()
     created_at?: string;
 
+    @Column()
+    avatar!: string;
+
 }
