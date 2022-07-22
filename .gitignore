@@ -4,3 +4,4 @@ yarn.lock
 .editorconfig
 postgres-data/
 .env
+temp/
