@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../errors/AppError";
+import { deleteFile } from "../../../../utils/file";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 interface IRequest {
@@ -16,6 +17,8 @@ export class UpdateUserAvatarUseCase {
 
     async execute({ user_id, avatar_file }: IRequest) {
         const user = await this.userRepository.findByID(Number(user_id))
+
+        if (user?.avatar) await deleteFile(`./temp/avatar/${user.avatar}`)
 
         if (!user) throw new AppError("User not found.");
 
