@@ -23,7 +23,10 @@ export class User {
     @CreateDateColumn()
     created_at?: string;
 
-    @Column()
-    avatar!: string;
+    @Column({
+        type: "varchar",
+        nullable: true
+    })
+    avatar!: string | null;
 
 }
