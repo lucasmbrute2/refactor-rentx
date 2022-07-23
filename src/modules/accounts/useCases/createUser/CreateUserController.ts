@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { AppError } from "../../../../errors/AppError";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 export class CreateUserController {
