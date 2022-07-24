@@ -1,16 +1,28 @@
-describe("Create category", () => {
-    it("Expected 2 + 2 = 4", () => {
-        const sum = 2 + 2;
-        const result = 4;
+import { CategoriesRepositoryInMemory } from "../../repositories/in-memory/CategoriesRepositoryInMemory";
+import { CreateCategoryUseCase } from "./createCategoryUseCase"
 
-        expect(sum).toBe(result)
+let createCategoryUseCase: CreateCategoryUseCase;
+let categoriesRepositoryInMemory: CategoriesRepositoryInMemory;
+
+describe("Create Category", () => {
+
+
+    beforeEach(() => {
+        categoriesRepositoryInMemory = new CategoriesRepositoryInMemory();
+        createCategoryUseCase = new CreateCategoryUseCase(categoriesRepositoryInMemory);
     })
 
-    it("Expect 2 + 2 not be 5", () => {
-        const sum = 2 + 4;
-        const result = 5;
+    it("should be able to create a new category", async () => {
+        const category = {
+            name: "Category Test",
+            description: "Category description test"
+        }
+
+        await createCategoryUseCase.execute(category)
+
+        const categoryCreated = await categoriesRepositoryInMemory.findByName(category.name)
 
 
-        expect(sum).not.toBe(result)
+        expect(categoryCreated).toHaveProperty("id");
     })
 })
