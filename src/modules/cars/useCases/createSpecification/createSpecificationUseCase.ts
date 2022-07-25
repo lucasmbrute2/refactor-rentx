@@ -1,6 +1,6 @@
+import { AppError } from "@errors/AppError";
+import { ICreateSpecificationDTO, ISpecificationRepository } from "@modules/cars/repositories/ISpecificationReposity";
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../../errors/AppError";
-import { ICreateSpecificationDTO, ISpecificationRepository } from "../../repositories/ISpecificationReposity";
 
 @injectable()
 export class CreateSpecificationUseCase {
