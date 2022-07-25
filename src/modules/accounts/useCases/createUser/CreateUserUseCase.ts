@@ -16,10 +16,11 @@ export class CreateUserUseCase {
 
         if (user) throw new AppError("User already exists.");
 
-        const { password } = data;
+        const cloneData = { ...data }
+        const { password } = cloneData;
         const hashPassword = await hash(password, 8);
-        data.password = hashPassword
+        cloneData.password = hashPassword
 
-        await this.usersRepository.create(data)
+        await this.usersRepository.create(cloneData)
     }
 }
