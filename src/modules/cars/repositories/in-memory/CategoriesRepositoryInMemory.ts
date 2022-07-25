@@ -1,5 +1,4 @@
-import { randomUUID } from "crypto";
-import { Category } from "../../entities/Category";
+import { Category } from "@modules/cars/infra/typeorm/entities/Category";
 import { ICategoriesDTO, ICategoriesRepository } from "../ICategoriesRepository";
 
 export class CategoriesRepositoryInMemory implements ICategoriesRepository {

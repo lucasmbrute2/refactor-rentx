@@ -1,8 +1,8 @@
-import { ICreateUsersDTO } from "../../dtos/ICreateUserDTO";
-import { User } from "../../entities/User";
-import { IUsersRepository } from "../IUsersRepository";
-import { AppDataSource } from "../../../../database/data-source"
+import { AppDataSource } from "../../../../../shared/typeorm/data-source"
 import { Repository } from "typeorm";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import { ICreateUsersDTO } from "@modules/accounts/dtos/ICreateUserDTO";
 
 export class UsersRepository implements IUsersRepository {
     private repository: Repository<User>;

@@ -1,4 +1,4 @@
-import { User } from "../../entities/User";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
 import { IUsersRepository } from "../IUsersRepository";
 
 export class UsersRepositoryInMemory implements IUsersRepository {
@@ -14,14 +14,20 @@ export class UsersRepositoryInMemory implements IUsersRepository {
         return await this.users;
     }
 
-    async findByEmail(email: string): Promise<User | void> {
+    async findByEmail(email: string): Promise<User | null> {
 
-        return await this.users.find(user => user.email === email);
+        const user = await this.users.find(user => user.email === email);
+        if (!user) return null
+
+        return user
 
     }
 
-    async findByID(userID: number): Promise<User | void> {
-        return await this.users.find(user => user.id === userID);
+    async findByID(userID: number): Promise<User | null> {
+        const user = await this.users.find(user => user.id === userID);
+        if (!user) return null
+
+        return user
     }
 
 }

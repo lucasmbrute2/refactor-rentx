@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { container } from "tsyringe";
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "../../../../shared/errors/AppError";
 import { ImportCategoryUseCase } from "../importCategory/importCategoryUseCase"
 
 export class ImportCategoryController {
