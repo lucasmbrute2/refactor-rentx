@@ -4,4 +4,6 @@ declare namespace Express {
             id: string;
         }
     }
-}  
+}
+
+type Falsy = false | 0 | "" | null | undefined 
