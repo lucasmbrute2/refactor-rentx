@@ -9,5 +9,6 @@ export default {
     },
     token: {
         md5Hash: process.env.MD5HASH_JSON_TOKEN ?? 'sounds'
-    }
+    },
+    password: process.env.ADMIN_PASSWORD ?? "admin"
 }
