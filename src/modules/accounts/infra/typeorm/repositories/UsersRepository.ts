@@ -1,4 +1,4 @@
-import { AppDataSource } from "../../../../../shared/typeorm/data-source"
+import { AppDataSource } from "../../../../../shared/infra/typeorm/data-source"
 import { Repository } from "typeorm";
 import { User } from "@modules/accounts/infra/typeorm/entities/User";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";

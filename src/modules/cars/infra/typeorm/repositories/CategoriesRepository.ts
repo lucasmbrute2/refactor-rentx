@@ -1,5 +1,5 @@
 import { ICategoriesDTO, ICategoriesRepository } from "../../../repositories/ICategoriesRepository";
-import { AppDataSource } from "../../../../../shared/typeorm/data-source"
+import { AppDataSource } from "../../../../../shared/infra/typeorm/data-source"
 import { Repository } from "typeorm";
 import { Category } from "@modules/cars/infra/typeorm/entities/Category";
 

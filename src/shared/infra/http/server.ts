@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors"
-import { createConnection } from "../../typeorm/data-source";
+import { createConnection } from "../typeorm/data-source";
 import "../../container";
 import { router } from "./routes/index"
 import { AppError } from "../../errors/AppError";
