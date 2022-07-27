@@ -3,7 +3,7 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeor
 @Entity("User")
 export class User {
     @PrimaryGeneratedColumn()
-    id?: number;
+    id?: number | string;
 
     @Column()
     name!: string;
