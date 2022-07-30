@@ -1,6 +1,12 @@
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
 import { ICarsRepository, ICreateCarDTO } from "../ICarsRepository";
 
+export interface IFindAllAvailableCarDTO {
+    brand?: string,
+    category_id?: string,
+    name?: string
+}
+
 export class CarsRepositoryInMemory implements ICarsRepository {
     cars: Car[] = [];
 
@@ -26,4 +32,13 @@ export class CarsRepositoryInMemory implements ICarsRepository {
         return carObj
     }
 
+    async findAllAvailable(data: IFindAllAvailableCarDTO): Promise<Car[] | Falsy> {
+        // @ts-ignore
+        const availableKeys = Object.keys(data).filter(value => data[value])
+        // @ts-ignore
+        const availableValues = availableKeys.map(value => data[value])
+        // @ts-ignore 
+        return this.cars.filter(car => car.available).filter(cars => availableKeys.map((keys, i) => cars[keys] === availableValues[i])
+        )
+    }
 }
