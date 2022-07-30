@@ -1,4 +1,5 @@
 import { ICarsRepository, ICreateCarDTO } from "@modules/cars/repositories/ICarsRepository";
+import { IFindAllAvailableCarDTO } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory";
 import { AppDataSource } from "@shared/infra/typeorm/data-source";
 import { Repository } from "typeorm";
 import { Car } from "../entities/Car";
@@ -8,6 +9,18 @@ export class CarsRepository implements ICarsRepository {
     private repository: Repository<Car>
     constructor() {
         this.repository = AppDataSource.getRepository(Car)
+    }
+
+    async findAllAvailable({ category_id, brand, name }: IFindAllAvailableCarDTO): Promise<Car[]> {
+        const carsQuery = await this.repository
+            .createQueryBuilder("cars")
+            .where("cars.available = :available", { available: true });
+
+        if (category_id) carsQuery.andWhere("cars.category_id = :category_id", { category_id })
+        if (brand) carsQuery.andWhere("cars.brand = :brand", { brand })
+        if (name) carsQuery.andWhere("cars.name = :name", { name })
+
+        return await carsQuery.getMany()
     }
 
     async create(data: ICreateCarDTO): Promise<Car> {
