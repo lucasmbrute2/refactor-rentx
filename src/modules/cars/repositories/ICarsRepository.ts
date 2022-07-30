@@ -1,4 +1,5 @@
 import { Car } from "../infra/typeorm/entities/Car";
+import { IFindAllAvailableCarDTO } from "./in-memory/CarsRepositoryInMemory";
 
 export interface ICreateCarDTO {
     name: string;
@@ -13,4 +14,5 @@ export interface ICreateCarDTO {
 export interface ICarsRepository {
     create(data: ICreateCarDTO): Promise<Car>
     findByLicensePlate(license_plate: string): Promise<Car | Falsy>
+    findAllAvailable({ category_id, brand, name }: IFindAllAvailableCarDTO): Promise<Car[] | Falsy>
 }
