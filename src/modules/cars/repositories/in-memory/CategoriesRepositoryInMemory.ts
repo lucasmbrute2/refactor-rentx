@@ -1,5 +1,6 @@
 import { Category } from "@modules/cars/infra/typeorm/entities/Category";
 import { ICategoriesDTO, ICategoriesRepository } from "../ICategoriesRepository";
+import { v4 as uuid } from "uuid"
 
 export class CategoriesRepositoryInMemory implements ICategoriesRepository {
 
@@ -16,7 +17,7 @@ export class CategoriesRepositoryInMemory implements ICategoriesRepository {
 
     async createCategory({ name, description }: ICategoriesDTO): Promise<void> {
         const category = new Category();
-        const id = Math.floor(Math.random() * Number(Date.now()))
+        const id = uuid();
 
         Object.assign(category, {
             id,

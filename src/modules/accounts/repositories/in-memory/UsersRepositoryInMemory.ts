@@ -23,7 +23,7 @@ export class UsersRepositoryInMemory implements IUsersRepository {
 
     }
 
-    async findByID(userID: number): Promise<User | null> {
+    async findByID(userID: string): Promise<User | null> {
         const user = await this.users.find(user => user.id === userID);
         if (!user) return null
 
