@@ -11,5 +11,6 @@ router.use("/categories", categoriesRouter)
 router.use("/specifications", specificationRouter)
 router.use("/user", userRouter)
 router.use("/car", carsRouter)
+router.use(authenticateRouter)
 
 export { router }
