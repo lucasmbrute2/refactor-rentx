@@ -1,12 +1,12 @@
 import { Router } from "express"
 import { CreateSpecificationController } from "../../../../modules/cars/useCases/createSpecification/createSpecificationController"
+import { ensureAdmin } from "../middlewares/ensureAdmin";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
 const specificationRouter = Router()
 
 const createSpecificationController = new CreateSpecificationController();
 
-specificationRouter.use(ensureAuthenticated)
-specificationRouter.post("/", createSpecificationController.handle)
+specificationRouter.post("/", ensureAuthenticated, ensureAdmin, createSpecificationController.handle)
 
 export { specificationRouter }
