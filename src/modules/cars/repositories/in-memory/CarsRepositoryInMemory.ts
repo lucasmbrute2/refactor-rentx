@@ -38,4 +38,8 @@ export class CarsRepositoryInMemory implements ICarsRepository {
         return this.cars.filter(car => car.available).filter(cars => objecttWithAvailableValues.map((keys, i) => cars[keys] === objecttWithAvailableValues[i])
         )
     }
+
+    async findById(id: string): Promise<Falsy | Car> {
+        return this.cars.find(car => car.id === id)
+    }
 }
