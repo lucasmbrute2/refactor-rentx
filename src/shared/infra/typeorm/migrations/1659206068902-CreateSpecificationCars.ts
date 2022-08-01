@@ -49,7 +49,7 @@ export class CreateSpecificationCars1659206068902 implements MigrationInterface 
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         const table = await queryRunner.getTable("specifications_cars")
-        const foreignKeys = table?.foreignKeys.filter(fk => (fk.columnNames.indexOf("car_id") || fk.columnNames.indexOf("specification_id") !== -1))
+        const foreignKeys = table?.foreignKeys.filter(fk => fk.columnNames.indexOf("car_id") !== -1 || fk.columnNames.indexOf("specification_id") !== -1)
 
         if (foreignKeys) await queryRunner.dropForeignKeys("specifications_cars", foreignKeys)
 
