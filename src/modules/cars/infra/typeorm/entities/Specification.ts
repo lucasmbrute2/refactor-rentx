@@ -2,7 +2,6 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeor
 
 @Entity("Specification")
 export class Specification {
-
     @PrimaryGeneratedColumn()
     id?: string;
 

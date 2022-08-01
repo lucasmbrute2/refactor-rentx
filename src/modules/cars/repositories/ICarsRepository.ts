@@ -1,4 +1,5 @@
 import { Car } from "../infra/typeorm/entities/Car";
+import { Specification } from "../infra/typeorm/entities/Specification";
 import { IFindAllAvailableCarDTO } from "./in-memory/CarsRepositoryInMemory";
 
 export interface ICreateCarDTO {
@@ -9,6 +10,8 @@ export interface ICreateCarDTO {
     fine_amount: number;
     brand: string;
     category_id: string;
+    specifications?: Specification[]
+    id?: string;
 }
 
 export interface ICarsRepository {
