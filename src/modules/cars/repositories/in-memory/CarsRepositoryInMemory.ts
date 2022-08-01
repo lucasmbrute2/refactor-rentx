@@ -15,7 +15,7 @@ export class CarsRepositoryInMemory implements ICarsRepository {
     }
 
     async create(car: ICreateCarDTO): Promise<Car> {
-        const { brand, category_id, daily_rate, description, fine_amount, license_plate, name } = car
+        const { brand, category_id, daily_rate, description, fine_amount, license_plate, name, specifications, id } = car
         const carObj = new Car()
 
         Object.assign(carObj, {
@@ -25,7 +25,9 @@ export class CarsRepositoryInMemory implements ICarsRepository {
             description,
             fine_amount,
             license_plate,
-            name
+            name,
+            specifications,
+            id
         })
 
         await this.cars.push(carObj)
