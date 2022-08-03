@@ -7,6 +7,7 @@ import { Category } from "@modules/cars/infra/typeorm/entities/Category";
 import { Specification } from "@modules/cars/infra/typeorm/entities/Specification";
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
 import { CarImage } from "@modules/cars/infra/typeorm/entities/CarImages";
+import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -17,7 +18,7 @@ export const AppDataSource = new DataSource({
     database: dontenv.database.databaseName,
     synchronize: true,
     logging: true,
-    entities: [Category, Specification, User, Car, CarImage],
+    entities: [Category, Specification, User, Car, CarImage, Rental],
     subscribers: [],
     migrations
 })
