@@ -1,9 +1,10 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid"
+import { CarImage } from "./CarImages";
 import { Category } from "./Category";
 import { Specification } from "./Specification";
 
-@Entity("Car")
+@Entity()
 export class Car {
     @PrimaryColumn()
     id?: string;
@@ -38,6 +39,9 @@ export class Car {
     @ManyToOne(() => Category)
     @JoinColumn({ name: "category_id" })
     category!: Category
+
+    @OneToMany(() => CarImage, ((carImage) => carImage.car_id))
+    car_image!: CarImage[];
 
     @ManyToMany(() => Specification)
     @JoinTable({

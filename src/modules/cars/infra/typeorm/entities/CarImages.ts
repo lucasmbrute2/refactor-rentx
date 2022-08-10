@@ -7,7 +7,7 @@ export class CarImage {
     @PrimaryGeneratedColumn()
     id!: string;
 
-    @ManyToOne(() => Car, (car) => car.id)
+    @ManyToOne(() => Car, (car) => car.car_image)
     car_id!: string;
 
     @Column()
