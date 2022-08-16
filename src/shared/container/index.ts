@@ -1,5 +1,5 @@
 import { container } from "tsyringe"
-import "./providers/DateProvider/DayJsDateProvider"
+import "@shared/container/providers/index"
 import { UsersRepository } from "../../modules/accounts/infra/typeorm/repositories/UsersRepository"
 import { IUsersRepository } from "../../modules/accounts/repositories/IUsersRepository"
 import { ICategoriesRepository } from "../../modules/cars/repositories/ICategoriesRepository"

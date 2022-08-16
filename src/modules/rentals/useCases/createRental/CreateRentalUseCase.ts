@@ -15,6 +15,7 @@ export class CreateRentalUseCase {
     constructor(
         @inject("RentalsRepository")
         private rentalsRepository: IRentalsRepository,
+        @inject("DateProvider")
         private dateProvider: IDateProvider
     ) { }
     async execute({ car_id, user_id, expected_return_date }: IRequest): Promise<Rental> {

@@ -36,9 +36,9 @@ export class Car {
     @CreateDateColumn()
     created_at?: Date;
 
-    @ManyToOne(() => Category)
-    @JoinColumn({ name: "category_id" })
-    category!: Category
+    // @ManyToOne(() => Category)
+    // @JoinColumn({ name: "id" })
+    // category!: Category
 
     @OneToMany(() => CarImage, ((carImage) => carImage.car_id))
     car_image!: CarImage[];

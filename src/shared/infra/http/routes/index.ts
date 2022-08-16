@@ -12,7 +12,7 @@ router.use("/categories", categoriesRouter)
 router.use("/specifications", specificationRouter)
 router.use("/user", userRouter)
 router.use("/car", carsRouter)
-router.use("/rental", rentalRouter)
+router.use("/rentals", rentalRouter)
 router.use(authenticateRouter)
 
 export { router }

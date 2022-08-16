@@ -15,7 +15,6 @@ export const migrations = [
     AlterUserDeleteUserName1657774263727,
     AlterUserAddAvatar1658376169074,
     CreateCars1658791215491,
-    CreateSpecificationCars1659206068902,
     CarImages1659402018995,
     CreateRentals1659488853705
 ]
