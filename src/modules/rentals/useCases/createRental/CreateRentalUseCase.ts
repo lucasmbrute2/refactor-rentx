@@ -1,9 +1,7 @@
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository"
-import { DayJsDateProvider } from "@shared/container/providers/DateProvider/DayJsDateProvider";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
-import dayjs from "dayjs";
 
 export interface IRequest {
     user_id: string;
