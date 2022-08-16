@@ -17,6 +17,7 @@ export class DayJsDateProvider implements IDateProvider {
         const start_date_utc = this.convertToUTC(start_date)
 
         //@ts-ignore
-        return dayjs(start_date_utc).diff(end_date_utc, "hours")
+        return dayjs(end_date_utc).diff(start_date_utc, "hours")
+
     }
 }
