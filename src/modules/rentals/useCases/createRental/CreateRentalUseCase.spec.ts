@@ -2,16 +2,19 @@ import { RentalsRepositoryInMemory } from "@modules/rentals/repositories/in-memo
 import { AppError } from "@shared/errors/AppError";
 import { CreateRentalUseCase } from "./CreateRentalUseCase"
 import dayjs from "dayjs"
+import { DayJsDateProvider } from "@shared/container/providers/DateProvider/DayJsDateProvider";
 
 let createRentalUseCase: CreateRentalUseCase;
 let rentalRepositoryInMemory: RentalsRepositoryInMemory
+let dayJsProvider: DayJsDateProvider
 
 describe("Create Rental", () => {
     const dayAdd24hours = dayjs().add(1, "day").toDate();
 
     beforeEach(() => {
         rentalRepositoryInMemory = new RentalsRepositoryInMemory
-        createRentalUseCase = new CreateRentalUseCase(rentalRepositoryInMemory);
+        dayJsProvider = new DayJsDateProvider()
+        createRentalUseCase = new CreateRentalUseCase(rentalRepositoryInMemory, dayJsProvider);
     })
 
     it("should not be able to create a rental to an car already rented", () => {
