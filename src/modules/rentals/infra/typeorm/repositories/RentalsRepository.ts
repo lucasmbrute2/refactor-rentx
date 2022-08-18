@@ -18,7 +18,6 @@ export class RentalsRepository implements IRentalsRepository {
             ...data,
             created_at: dayJsDateProvider.dateNow(),
             start_date: dayJsDateProvider.dateNow(),
-            end_date: dayJsDateProvider.dateAfter24Hours(),
             expected_return_data: dayJsDateProvider.dateAfter24Hours(),
             updated_at: dayJsDateProvider.dateNow()
         })
