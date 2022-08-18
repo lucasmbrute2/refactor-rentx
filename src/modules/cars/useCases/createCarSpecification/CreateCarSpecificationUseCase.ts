@@ -6,8 +6,8 @@ import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {
-    car_id: string;
-    specifications_id: string[]
+    car_id: number;
+    specifications_id: number[]
 }
 
 @injectable()

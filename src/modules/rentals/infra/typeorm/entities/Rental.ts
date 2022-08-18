@@ -1,27 +1,30 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { v4 as uuid } from "uuid"
 
 @Entity()
 export class Rental {
     @PrimaryGeneratedColumn()
-    id?: string;
+    id?: number;
 
     @Column()
-    car_id!: string;
+    car_id!: number;
 
     @Column()
-    user_id!: string;
+    user_id!: number;
 
     @Column()
     start_date!: Date;
 
-    @Column()
+    @Column({
+        nullable: true
+    })
     end_date!: Date;
 
     @Column()
     expected_return_data!: Date;
 
-    @Column()
+    @Column({
+        nullable: true
+    })
     total!: number;
 
     @Column()
@@ -31,6 +34,6 @@ export class Rental {
     updated_at!: Date;
 
     constructor() {
-        if (!this.id) this.id = uuid()
+        if (!this.id) this.id = Math.floor(Math.random() * 5000)
     }
 }

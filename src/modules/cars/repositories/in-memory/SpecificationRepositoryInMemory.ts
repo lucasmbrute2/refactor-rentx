@@ -21,8 +21,8 @@ export class SpecificationRepositoryInMemory implements ISpecificationRepository
         return await this.specifications.find(spec => spec.name === name)
     }
 
-    async findByIds(ids: string[]): Promise<Falsy | Specification[]> {
-        return await this.specifications.filter(spec => ids.includes(spec.id as string))
+    async findByIds(ids: number[]): Promise<Falsy | Specification[]> {
+        return await this.specifications.filter(spec => ids.includes(spec.id as number))
     }
 
 }

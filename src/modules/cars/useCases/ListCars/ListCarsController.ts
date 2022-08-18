@@ -8,7 +8,7 @@ export class ListCarsController {
         const { category_id, brand, name } = req.query;
         const listCarsUseCase = container.resolve(ListCarsUseCase);
 
-        const cars = await listCarsUseCase.execute({ category_id, brand, name } as IFindAllAvailableCarDTO);
+        const cars = await listCarsUseCase.execute({ category_id: Number(category_id), brand, name } as IFindAllAvailableCarDTO);
 
         return res.json(cars)
     }

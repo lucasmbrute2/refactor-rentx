@@ -8,12 +8,12 @@ export class CarImages1659402018995 implements MigrationInterface {
             columns: [
                 {
                     name: "id",
-                    type: "uuid",
+                    type: "integer",
                     isPrimary: true
                 },
                 {
                     name: "car_id",
-                    type: "uuid",
+                    type: "integer",
 
                 },
                 {

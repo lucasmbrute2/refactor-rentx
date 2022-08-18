@@ -9,14 +9,14 @@ export interface ICreateCarDTO {
     license_plate: string;
     fine_amount: number;
     brand: string;
-    category_id: string;
+    category_id: number;
     specifications?: Specification[]
-    id?: string;
+    id?: number;
 }
 
 export interface ICarsRepository {
     create(data: ICreateCarDTO): Promise<Car>
     findByLicensePlate(license_plate: string): Promise<Car | Falsy>
     findAllAvailable({ category_id, brand, name }: IFindAllAvailableCarDTO): Promise<Car[] | Falsy>
-    findById(id: string): Promise<Car | Falsy>
+    findById(id: number): Promise<Car | Falsy>
 }

@@ -32,7 +32,7 @@ export class CarsRepository implements ICarsRepository {
         return this.repository.findOneBy({ license_plate })
     }
 
-    async findById(id: string): Promise<Car | Falsy> {
+    async findById(id: number): Promise<Car | Falsy> {
         const [car] = await this.repository.find({
             where: {
                 id

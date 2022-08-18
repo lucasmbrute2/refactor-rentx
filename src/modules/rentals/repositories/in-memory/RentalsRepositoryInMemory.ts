@@ -17,11 +17,11 @@ export class RentalsRepositoryInMemory implements IRentalsRepository {
         return await rentalObj;
     }
 
-    async findByCarID(car_id: string): Promise<Rental | Falsy> {
+    async findByCarID(car_id: number): Promise<Rental | Falsy> {
         return await this.rental.find(rental => rental.car_id === car_id && !rental.end_date);
     }
 
-    async findByUser(user_id: string): Promise<Rental | Falsy> {
+    async findByUser(user_id: number): Promise<Rental | Falsy> {
         return await this.rental.find(rental => rental.user_id === user_id && !rental.end_date)
     }
 }

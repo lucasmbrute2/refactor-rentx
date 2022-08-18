@@ -5,10 +5,10 @@ import { Car } from "./Car";
 @Entity()
 export class CarImage {
     @PrimaryGeneratedColumn()
-    id!: string;
+    id!: number;
 
     @ManyToOne(() => Car, (car) => car.car_image)
-    car_id!: string;
+    car_id!: number;
 
     @Column()
     image_name!: string;
@@ -17,6 +17,6 @@ export class CarImage {
     created_at!: Date;
 
     constructor() {
-        if (!this.id) this.id = uuid();
+        if (!this.id) this.id = Math.floor(Math.random() * 5000)
     }
 }

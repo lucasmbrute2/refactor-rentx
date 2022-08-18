@@ -16,7 +16,7 @@ export class UploadCarController {
         const images_name = images?.map(file => file.filename)
 
         await uploadCarImagUseCase.execute({
-            car_id: id,
+            car_id: Number(id),
             images_name
         })
 

@@ -2,7 +2,7 @@ import { ICarsImagesRepositories } from "@modules/cars/repositories/ICarsImagesR
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {
-    car_id: string;
+    car_id: number;
     images_name: string[];
 }
 

@@ -8,7 +8,7 @@ export class CreateCarSpecificationController {
         const { id: car_id } = req.params
         const { specifications_id } = req.body;
 
-        const cars = await createCarSpecificationUseCase.execute({ car_id, specifications_id })
+        const cars = await createCarSpecificationUseCase.execute({ car_id: Number(car_id), specifications_id })
 
         return res.json(cars)
     }

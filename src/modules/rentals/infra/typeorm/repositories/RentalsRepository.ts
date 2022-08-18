@@ -3,7 +3,7 @@ import { IRequest } from "@modules/rentals/useCases/createRental/CreateRentalUse
 import { AppDataSource } from "@shared/infra/typeorm/data-source";
 import { Repository } from "typeorm";
 import { Rental } from "../entities/Rental";
-
+import { DayJsDateProvider } from "@shared/container/providers/DateProvider/DayJsDateProvider"
 export class RentalsRepository implements IRentalsRepository {
     private repository: Repository<Rental>
 
@@ -12,17 +12,26 @@ export class RentalsRepository implements IRentalsRepository {
     }
 
     async create(data: IRequest): Promise<Rental> {
-        const rental = this.repository.create(data)
+        const dayJsDateProvider = new DayJsDateProvider()
+
+        const rental = this.repository.create({
+            ...data,
+            created_at: dayJsDateProvider.dateNow(),
+            start_date: dayJsDateProvider.dateNow(),
+            end_date: dayJsDateProvider.dateAfter24Hours(),
+            expected_return_data: dayJsDateProvider.dateAfter24Hours(),
+            updated_at: dayJsDateProvider.dateNow()
+        })
         return await this.repository.save(rental)
     }
 
-    async findByCarID(car_id: string): Promise<Rental | Falsy> {
+    async findByCarID(car_id: number): Promise<Rental | Falsy> {
         return await this.repository.findOneBy({
             car_id
         })
     }
 
-    async findByUser(user_id: string): Promise<Rental | Falsy> {
+    async findByUser(user_id: number): Promise<Rental | Falsy> {
         return await this.repository.findOneBy({
             user_id
         })

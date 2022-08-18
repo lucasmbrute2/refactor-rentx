@@ -7,7 +7,7 @@ import { Specification } from "./Specification";
 @Entity()
 export class Car {
     @PrimaryColumn()
-    id?: string;
+    id?: number;
 
     @Column()
     name!: string;
@@ -28,17 +28,13 @@ export class Car {
     brand!: string;
 
     @Column()
-    category_id!: string;
+    category_id!: number;
 
     @Column()
     available?: boolean = true
 
     @CreateDateColumn()
     created_at?: Date;
-
-    // @ManyToOne(() => Category)
-    // @JoinColumn({ name: "id" })
-    // category!: Category
 
     @OneToMany(() => CarImage, ((carImage) => carImage.car_id))
     car_image!: CarImage[];
@@ -62,7 +58,7 @@ export class Car {
 
     constructor() {
         if (!this.id) {
-            this.id = uuid();
+            this.id = Math.floor(Math.random() * 5000)
         }
     }
 }

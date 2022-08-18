@@ -4,7 +4,7 @@ import { deleteFile } from "@utils/file";
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {
-    user_id: string;
+    user_id: number;
     avatar_file: string;
 }
 

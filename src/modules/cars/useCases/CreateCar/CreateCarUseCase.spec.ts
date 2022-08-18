@@ -14,7 +14,7 @@ describe("Create car", () => {
     it("should be able to create a new car", async () => {
         const car = await createCarUseCase.execute({
             brand: "Brand test Car",
-            category_id: "Category",
+            category_id: 1,
             daily_rate: 1,
             description: "Description test Car",
             fine_amount: 1,
@@ -29,7 +29,7 @@ describe("Create car", () => {
         expect(async () => {
             await createCarUseCase.execute({
                 brand: "Brand test Car",
-                category_id: "Category",
+                category_id: 1,
                 daily_rate: 1,
                 description: "Description test Car",
                 fine_amount: 1,
@@ -39,7 +39,7 @@ describe("Create car", () => {
 
             await createCarUseCase.execute({
                 brand: "Brand test Car2",
-                category_id: "Category",
+                category_id: 1,
                 daily_rate: 1,
                 description: "Description test Car",
                 fine_amount: 1,
@@ -52,7 +52,7 @@ describe("Create car", () => {
     it("car should be registered with available true", async () => {
         const car = await createCarUseCase.execute({
             brand: "Car Available",
-            category_id: "Category",
+            category_id: 1,
             daily_rate: 1,
             description: "Description test Car",
             fine_amount: 1,

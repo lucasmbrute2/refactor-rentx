@@ -18,9 +18,8 @@ export const AppDataSource = new DataSource({
     database: dontenv.database.databaseName,
     logging: true,
     entities: [Category, Specification, User, Car, CarImage, Rental],
-    synchronize: true,
     subscribers: [],
-
+    synchronize: true,
     migrations,
 })
 export async function createConnection(): Promise<void> {

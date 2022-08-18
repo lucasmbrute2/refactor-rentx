@@ -18,8 +18,8 @@ describe("Create Car Specification", () => {
     it("should not be able to add a new specification to a non existent car ID or specification ID", () => {
         expect(async () => {
             await createCarSpecificationUseCase.execute({
-                car_id: "non existent ID",
-                specifications_id: ["non existent ID"]
+                car_id: 1,
+                specifications_id: [1]
             })
         }).rejects.toBeInstanceOf(AppError)
     })
@@ -27,7 +27,7 @@ describe("Create Car Specification", () => {
     it("should be able to add a new specification to car", async () => {
         const car = await carsRepository.create({
             brand: "Brand test Car",
-            category_id: "Category",
+            category_id: 1,
             daily_rate: 1,
             description: "Description test Car",
             fine_amount: 1,
@@ -41,8 +41,8 @@ describe("Create Car Specification", () => {
         })
 
         const specificationCars = await createCarSpecificationUseCase.execute({
-            car_id: car.id as string,
-            specifications_id: [specification.id as string]
+            car_id: car.id as number,
+            specifications_id: [specification.id as number]
         })
 
 

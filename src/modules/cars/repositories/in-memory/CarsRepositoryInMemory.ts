@@ -3,7 +3,7 @@ import { ICarsRepository, ICreateCarDTO } from "../ICarsRepository";
 
 export interface IFindAllAvailableCarDTO {
     brand?: string,
-    category_id?: string,
+    category_id?: number,
     name?: string
 }
 
@@ -41,7 +41,7 @@ export class CarsRepositoryInMemory implements ICarsRepository {
         )
     }
 
-    async findById(id: string): Promise<Falsy | Car> {
+    async findById(id: number): Promise<Falsy | Car> {
         return this.cars.find(car => car.id === id)
     }
 }

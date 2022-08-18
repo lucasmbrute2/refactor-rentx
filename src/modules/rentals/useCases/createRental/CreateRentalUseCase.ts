@@ -5,8 +5,8 @@ import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 
 export interface IRequest {
-    user_id: string;
-    car_id: string;
+    user_id: number;
+    car_id: number;
     expected_return_date: Date;
 }
 

@@ -19,7 +19,7 @@ describe("List cars", () => {
             license_plate: "test",
             fine_amount: 100,
             brand: "test",
-            category_id: "category_id"
+            category_id: 1
         })
         const car2 = await carsRepositoryInMemory.create({
             name: "Carro Tes2t",
@@ -28,7 +28,7 @@ describe("List cars", () => {
             license_plate: "test2",
             fine_amount: 200,
             brand: "test2",
-            category_id: "category_id2"
+            category_id: 2
         })
         const cars = await listCarsUseCase.execute({});
         expect(cars).toEqual([car, car2])
@@ -42,7 +42,7 @@ describe("List cars", () => {
             license_plate: "test2",
             fine_amount: 200,
             brand: "test2",
-            category_id: "category_id2"
+            category_id: 2
         })
         const cars = await listCarsUseCase.execute({ name: car.name });
 
@@ -57,7 +57,7 @@ describe("List cars", () => {
             license_plate: "test3",
             fine_amount: 300,
             brand: "test3",
-            category_id: "category_id3"
+            category_id: 3
         })
         const cars = await listCarsUseCase.execute({ category_id: car.category_id, });
 
@@ -72,7 +72,7 @@ describe("List cars", () => {
             license_plate: "test4",
             fine_amount: 400,
             brand: "test4",
-            category_id: "category_id4"
+            category_id: 4
         })
         const cars = await listCarsUseCase.execute({ brand: car.brand });
 
@@ -87,7 +87,7 @@ describe("List cars", () => {
             license_plate: "test5",
             fine_amount: 500,
             brand: "test5",
-            category_id: "category_id5"
+            category_id: 5
         })
         const cars = await listCarsUseCase.execute({ category_id: car.category_id, brand: car.brand });
         expect(cars).toEqual([car])

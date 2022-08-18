@@ -7,27 +7,28 @@ import { DayJsDateProvider } from "@shared/container/providers/DateProvider/DayJ
 let createRentalUseCase: CreateRentalUseCase;
 let rentalRepositoryInMemory: RentalsRepositoryInMemory
 let dayJsProvider: DayJsDateProvider
+let dayAdd24hours: Date
 
 describe("Create Rental", () => {
-    const dayAdd24hours = dayjs().add(1, "day").toDate();
 
     beforeEach(() => {
         rentalRepositoryInMemory = new RentalsRepositoryInMemory
         dayJsProvider = new DayJsDateProvider()
         createRentalUseCase = new CreateRentalUseCase(rentalRepositoryInMemory, dayJsProvider);
+        dayAdd24hours = dayJsProvider.dateAfter24Hours()
     })
 
     it("should not be able to create a rental to an car already rented", () => {
         expect(async () => {
             await createRentalUseCase.execute({
-                car_id: "Carro id",
-                user_id: "Id do user",
+                car_id: 1,
+                user_id: 1,
                 expected_return_date: dayAdd24hours
             })
 
             await createRentalUseCase.execute({
-                car_id: "Carro id",
-                user_id: "Id do user2",
+                car_id: 1,
+                user_id: 2,
                 expected_return_date: dayAdd24hours
             })
         }).rejects.toBeInstanceOf(AppError)
@@ -35,14 +36,14 @@ describe("Create Rental", () => {
     it("should not be able to create a rental to an user that already rented a car", () => {
         expect(async () => {
             await createRentalUseCase.execute({
-                car_id: "Carro id",
-                user_id: "Id do user",
+                car_id: 1,
+                user_id: 1,
                 expected_return_date: dayAdd24hours
             })
 
             await createRentalUseCase.execute({
-                car_id: "Carro id2",
-                user_id: "Id do user",
+                car_id: 2,
+                user_id: 1,
                 expected_return_date: dayAdd24hours
             })
         }).rejects.toBeInstanceOf(AppError)
@@ -51,8 +52,8 @@ describe("Create Rental", () => {
 
     it("should be able to create a new rental", async () => {
         const rental = await createRentalUseCase.execute({
-            car_id: "Carro id",
-            user_id: "Id do user",
+            car_id: 1,
+            user_id: 1,
             expected_return_date: dayAdd24hours
         })
 
@@ -62,8 +63,8 @@ describe("Create Rental", () => {
     it("should not be able to create a new rental before 24 hours from another one", () => {
         expect(async () => {
             await createRentalUseCase.execute({
-                car_id: "Carro id 5",
-                user_id: "Id do user 5",
+                car_id: 5,
+                user_id: 5,
                 expected_return_date: dayjs().toDate()
             })
         }).rejects.toBeInstanceOf(AppError)

@@ -10,7 +10,7 @@ export class CreateRentalController {
 
         const rental = await createRentalUseCase.execute({
             car_id,
-            user_id,
+            user_id: Number(user_id),
             expected_return_date
         })
 
