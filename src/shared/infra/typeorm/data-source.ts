@@ -15,7 +15,7 @@ export const AppDataSource = new DataSource({
     port: 5432,
     username: dontenv.database.databaseUsername,
     password: dontenv.database.databasePassword,
-    database: dontenv.database.databaseName,
+    database: process.env.NODE_ENV === "test" ? dontenv.database.databaseNameTEST : dontenv.database.databaseName,
     logging: true,
     entities: [Category, Specification, User, Car, CarImage, Rental],
     subscribers: [],

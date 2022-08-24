@@ -4,6 +4,7 @@ dotenv.config();
 export default {
     database: {
         databaseName: process.env.DB ?? "postgres",
+        databaseNameTEST: process.env.DB_TEST ?? "rentx_test",
         databaseUsername: process.env.DB_USERNAME ?? "postgres",
         databasePassword: process.env.DB_PASSWORD ?? "postgres"
     },
