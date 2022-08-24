@@ -11,7 +11,7 @@ export class UpdateUserAvatarController {
 
         if (!avatar_file) throw new AppError("Avatar file not found.");
 
-        updateUserAvatarUseCase.execute({ user_id, avatar_file })
+        updateUserAvatarUseCase.execute({ user_id: Number(user_id), avatar_file })
 
         return res.status(204).send();
     }

@@ -20,12 +20,10 @@ export class SpecificationRepository implements ISpecificationRepository {
 
     }
 
-    async findByIds(ids: string[]): Promise<Falsy | Specification[]> {
+    async findByIds(ids: number[]): Promise<Falsy | Specification[]> {
         return await this.repository.findBy({
             id: In(ids)
         })
-
-
     }
 
 }
