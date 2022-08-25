@@ -16,3 +16,12 @@ export async function create() {
 }
 
 create().then(() => console.log("User admin created"))
+
+export async function clearDB() {
+    const entities = AppDataSource.entityMetadatas;
+
+    for (const entity of entities) {
+        const repository = AppDataSource.getRepository(entity.name);
+        await repository.query(`TRUNCATE ${entity.tableName} RESTART IDENTITY CASCADE;`);
+    }
+}
