@@ -11,6 +11,7 @@ export async function create() {
     VALUES('${Math.trunc(Math.random() * 100000)}','admin', 'admin@rentx.com', '${password}', true, 'now()', 'XXXXXXXX' )
     `)
 
+    if (process.env.NODE_ENV === 'test') return
     await AppDataSource.destroy()
 }
 
