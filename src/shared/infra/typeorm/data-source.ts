@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 
 import { migrations } from "./migrations"
 import dontenv from "../../../configs/dotenvEntries"
-import { User } from "@modules/accounts/infra/typeorm/entities/User";
+import { Users } from "@modules/accounts/infra/typeorm/entities/User";
 import { Category } from "@modules/cars/infra/typeorm/entities/Category";
 import { Specification } from "@modules/cars/infra/typeorm/entities/Specification";
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
@@ -17,11 +17,11 @@ export const AppDataSource = new DataSource({
     password: dontenv.database.databasePassword,
     database: process.env.NODE_ENV === "test" ? dontenv.database.databaseNameTEST : dontenv.database.databaseName,
     logging: true,
-    entities: [Category, Specification, User, Car, CarImage, Rental],
-    subscribers: [],
     synchronize: true,
+    entities: [Category, Specification, Users, Car, CarImage, Rental],
     migrations,
 })
+
 export async function createConnection(): Promise<void> {
     try {
         await AppDataSource.initialize()
