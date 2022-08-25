@@ -1,11 +1,11 @@
 import { app } from "@shared/infra/http/app"
-import { create } from "@shared/infra/typeorm/seed/admin"
+import { clearDB, create } from "@shared/infra/typeorm/seed/admin"
 import request from "supertest"
 import config from "@configs/dotenvEntries"
 
 describe("Create Category Controller", () => {
-    ''
-    beforeAll(async () => {
+    beforeEach(async () => {
+        await clearDB()
         await create()
     })
 
@@ -25,7 +25,7 @@ describe("Create Category Controller", () => {
         expect(response.status).toBe(201)
     })
 
-    it("should be able to create a new category with existent name", async () => {
+    it("should not be able to create a new category with existent name", async () => {
         const { body: { token } } = await request(app).post("/sessions").send({
             email: "admin@rentx.com",
             password: config.password
