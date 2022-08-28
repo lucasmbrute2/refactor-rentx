@@ -42,7 +42,7 @@ export class CreateRentalUseCase {
 
         if (!car) throw new AppError("Car could not be created")
 
-        await this.carsRepository.updateAvailable(car_id, true)
+        await this.carsRepository.updateAvailable(car_id, false)
         return car
     }
 }
