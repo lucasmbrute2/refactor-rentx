@@ -42,4 +42,14 @@ export class CarsRepository implements ICarsRepository {
         return car;
     }
 
+    async updateAvailable(id: number, available: boolean): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({ available })
+            .where("id=:id")
+            .setParameters({ id })
+            .execute()
+    }
+
 }
