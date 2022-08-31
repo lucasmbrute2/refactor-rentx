@@ -10,8 +10,8 @@ export class ListrentalsByUserUseCase {
         private rentalsRepository: IRentalsRepository
     ) { }
 
-    async execute(user_id: number): Promise<Rental> {
-        const rentalsByUser = await this.rentalsRepository.findByUser(user_id)
+    async execute(user_id: number): Promise<Rental[]> {
+        const rentalsByUser = await this.rentalsRepository.findAllRentalsByUser(user_id)
 
         if (!rentalsByUser) throw new AppError("Rental not found");
 

@@ -36,4 +36,8 @@ export class RentalsRepositoryInMemory implements IRentalsRepository {
 
         return rental
     }
+
+    async findAllRentalsByUser(user_id: number): Promise<Rental[]> {
+        return await this.rental.filter(rental => rental.user_id === user_id)
+    }
 }

@@ -7,4 +7,5 @@ export interface IRentalsRepository {
     findByUser(user_id: number): Promise<Rental | Falsy>
     findByID(id: number): Promise<Rental | Falsy>
     updateRental(rental: Rental): Promise<Rental | Falsy>
+    findAllRentalsByUser(user_id: number): Promise<Rental[]>
 }

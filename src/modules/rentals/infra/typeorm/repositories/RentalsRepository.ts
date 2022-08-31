@@ -66,4 +66,11 @@ export class RentalsRepository implements IRentalsRepository {
         return await this.findByID(rental.id as number)
     }
 
+    async findAllRentalsByUser(user_id: number): Promise<Rental[]> {
+        return await this.repository.find({
+            where: {
+                user_id
+            }
+        })
+    }
 }

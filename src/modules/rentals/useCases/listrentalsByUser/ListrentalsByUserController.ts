@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { ListrentalsByUserUseCase } from "./listrentalsByUserUseCase";
+import { ListrentalsByUserUseCase } from "./ListrentalsByUserUseCase";
 
 export class ListrentalsByUserController {
     async handle(req: Request, res: Response) {
