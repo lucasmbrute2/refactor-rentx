@@ -26,7 +26,9 @@ export class CreateRentalUseCase {
         const MINIMUM_COMPARE_HOURS = 24;
         const carAlreadyRented = await this.rentalsRepository.findByCarID(car_id)
         const userAlreadyRentedACar = await this.rentalsRepository.findByUser(user_id)
+        const carExists = await this.carsRepository.findById(car_id)
 
+        if (!carExists) throw new AppError("This car don't exists.");
         if (carAlreadyRented) throw new AppError("This car is already rented");
         if (userAlreadyRentedACar) throw new AppError("User has already rented a car");
 
