@@ -4,13 +4,13 @@ import { AppDataSource } from "@shared/infra/typeorm/data-source";
 import { Repository } from "typeorm";
 import { Rental } from "../entities/Rental";
 import { DayJsDateProvider } from "@shared/container/providers/DateProvider/DayJsDateProvider"
+
 export class RentalsRepository implements IRentalsRepository {
     private repository: Repository<Rental>
 
     constructor() {
         this.repository = AppDataSource.getRepository(Rental)
     }
-
     async create(data: IRequest): Promise<Rental> {
         const dayJsDateProvider = new DayJsDateProvider()
 
@@ -34,6 +34,21 @@ export class RentalsRepository implements IRentalsRepository {
         return await this.repository.findOneBy({
             user_id
         })
+    }
+
+    async findByID(id: number): Promise<Rental | Falsy> {
+        return await this.repository.findOneBy({
+            id
+        })
+    }
+
+    async updateRental(rental: Rental): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .update(Rental)
+            .set({ ...rental })
+            .where("id=:id", { id: rental.id })
+            .execute()
     }
 
 }

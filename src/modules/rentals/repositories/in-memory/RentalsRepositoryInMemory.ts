@@ -24,4 +24,14 @@ export class RentalsRepositoryInMemory implements IRentalsRepository {
     async findByUser(user_id: number): Promise<Rental | Falsy> {
         return await this.rental.find(rental => rental.user_id === user_id && !rental.end_date)
     }
+
+    async findByID(id: number): Promise<Rental | Falsy> {
+        return await this.rental.find(rental => rental.id === id)
+    }
+
+    async updateRental(rental: Rental): Promise<void> {
+        const updateRental = await this.rental.findIndex(rentals => rentals.id === rental.id)
+        if (updateRental) return;
+        this.rental[updateRental] = rental
+    }
 }
