@@ -70,7 +70,10 @@ export class RentalsRepository implements IRentalsRepository {
         return await this.repository.find({
             where: {
                 user_id
-            }
+            },
+            relations: [
+                "car"
+            ]
         })
     }
 }

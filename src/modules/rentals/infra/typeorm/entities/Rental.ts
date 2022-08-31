@@ -1,9 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Car } from "@modules/cars/infra/typeorm/entities/Car";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Rental {
     @PrimaryGeneratedColumn()
     id?: number;
+
+    @ManyToOne(() => Car)
+    @JoinColumn({ name: "car_id" })
+    car!: Car
 
     @Column()
     car_id!: number;
