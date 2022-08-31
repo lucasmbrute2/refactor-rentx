@@ -1,7 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
-import { v4 as uuid } from "uuid"
 import { CarImage } from "./CarImages";
-import { Category } from "./Category";
 import { Specification } from "./Specification";
 
 @Entity()
