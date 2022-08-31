@@ -64,7 +64,6 @@ export class RentalsRepository implements IRentalsRepository {
             .execute();
 
         return await this.findByID(rental.id as number)
-
     }
 
 }
