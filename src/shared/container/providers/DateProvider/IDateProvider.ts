@@ -3,4 +3,5 @@ export interface IDateProvider {
     convertToUTC(date: Date): String
     dateNow(): Date;
     dateAfter24Hours(): Date;
+    compareInDays(start_date: Date, end_date: Date): number;
 }
