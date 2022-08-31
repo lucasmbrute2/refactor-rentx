@@ -29,9 +29,11 @@ export class RentalsRepositoryInMemory implements IRentalsRepository {
         return await this.rental.find(rental => rental.id === id)
     }
 
-    async updateRental(rental: Rental): Promise<void> {
+    async updateRental(rental: Rental): Promise<Rental | Falsy> {
         const updateRental = await this.rental.findIndex(rentals => rentals.id === rental.id)
         if (updateRental) return;
         this.rental[updateRental] = rental
+
+        return rental
     }
 }

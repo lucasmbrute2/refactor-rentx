@@ -6,5 +6,5 @@ export interface IRentalsRepository {
     findByCarID(car_id: number): Promise<Rental | Falsy>
     findByUser(user_id: number): Promise<Rental | Falsy>
     findByID(id: number): Promise<Rental | Falsy>
-    updateRental(rental: Rental): Promise<void>
+    updateRental(rental: Rental): Promise<Rental | Falsy>
 }

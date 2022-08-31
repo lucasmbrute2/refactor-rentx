@@ -1,4 +1,5 @@
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
+import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
@@ -20,13 +21,13 @@ export class DevolutionRentalUseCase {
         private dateProvider: IDateProvider,
     ) { }
 
-    async execute({ id, user_id }: IRequest): Promise<void> {
+    async execute({ id, user_id }: IRequest): Promise<Rental> {
         const MINIMUN_DAILY = 1
 
-        const rental = await this.rentalsRepository.findByCarID(user_id)
+        const rental = await this.rentalsRepository.findByCarID(id)
         if (!rental) throw new AppError("Rental not found!");
 
-        const car = await this.carsRepository.findById(id)
+        const car = await this.carsRepository.findById(rental.car_id)
         if (!car) throw new AppError("Car not found!");
 
         const dateNow = await this.dateProvider.dateNow()
@@ -45,7 +46,10 @@ export class DevolutionRentalUseCase {
         rental.total = (car.daily_rate + delay ?? 0) * daily
         rental.end_date = dateNow
 
-        await this.rentalsRepository.updateRental(rental)
+        const updatedRental = await this.rentalsRepository.updateRental(rental)
+        if (!updatedRental) throw new AppError("Rental couldn't be updated");
+
         await this.carsRepository.updateAvailable(car?.id as number, true)
+        return updatedRental;
     }
 }
