@@ -24,6 +24,10 @@ export class CreateUserToken1661976692470 implements MigrationInterface {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()"
+                    },
+                    {
+                        name: "expires_date",
+                        type: "timestamp"
                     }
                 ],
                 foreignKeys: [
