@@ -30,4 +30,8 @@ export class DayJsDateProvider implements IDateProvider {
         return dayjs(end_date_utc as string).diff(start_date_utc as string, "days")
     }
 
+    addDays(days: number): Date {
+        return dayjs().add(days, "days").toDate()
+    }
+
 }
