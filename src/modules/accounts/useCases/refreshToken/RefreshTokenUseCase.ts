@@ -2,16 +2,17 @@ import dotenvEntries from "@configs/dotenvEntries";
 import { IUserTokensRepository } from "@modules/accounts/repositories/IUserTokensRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { verify, sign } from "jsonwebtoken"
-import { inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
 interface IPayload {
-    subject: string,
+    sub: string,
     email: string
 }
 
+@injectable()
 export class RefreshTokenUseCase {
     constructor(
-        @inject("UsersTokensRepository")
+        @inject("UserTokensRepository")
         private usersTokensRepository: IUserTokensRepository,
         @inject("DayJsDateProvider")
         private dayJsDateProvider: IDateProvider
@@ -19,7 +20,7 @@ export class RefreshTokenUseCase {
 
     async execute(refresh_token: string): Promise<string> {
         const DAYS_TO_EXPIRE_REFRESH_TOKEN = 30;
-        const { subject: user_id, email } = verify(refresh_token, dotenvEntries.token.refresh_token_key) as IPayload;
+        const { sub: user_id, email } = verify(refresh_token, dotenvEntries.token.refresh_token_key) as IPayload;
 
         const userToken = await this.usersTokensRepository.findByUserIDAndRefreshToken(Number(user_id), refresh_token)
 
