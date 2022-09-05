@@ -22,11 +22,8 @@ export class UserTokensRepository implements IUserTokensRepository {
     }
 
     async findByUserIDAndRefreshToken(user_id: number, refresh_token: string): Promise<UserTokens | Falsy> {
-        const token = await this.repository.findOne({
-            where: {
-                refresh_token,
-                user_id
-            }
+        const token = await this.repository.findOneBy({
+            user_id
         })
 
         if (!token) return null;
