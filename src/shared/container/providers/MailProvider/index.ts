@@ -2,7 +2,7 @@ import { container } from "tsyringe"
 import { IMailProvider } from "./IMailProvider"
 import { EtherealMailProvider } from "./Implementations/EtherealMailProvider"
 
-container.registerSingleton<IMailProvider>(
+container.registerInstance<IMailProvider>(
     "MailProvider",
-    EtherealMailProvider
+    new EtherealMailProvider()
 )
