@@ -14,5 +14,6 @@ export default {
         refresh_token_key: process.env.REFRESH_TOKEN_KEY as string,
         expires_in_refresh_token: "30d" as string
     },
-    password: process.env.ADMIN_PASSWORD ?? "admin"
+    password: process.env.ADMIN_PASSWORD ?? "admin",
+    forgotUrl: process.env.FORGOT_MAIL_URL
 }
