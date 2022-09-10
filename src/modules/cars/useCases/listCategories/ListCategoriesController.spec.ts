@@ -10,7 +10,7 @@ describe("List Category", () => {
     })
 
     it("should be able to list all categories", async () => {
-        const { body: { token } } = await request(app).post("/sessions").send({
+        const { body: { refresh_token } } = await request(app).post("/sessions").send({
             email: "admin@rentx.com",
             password: config.password
         })
@@ -19,7 +19,7 @@ describe("List Category", () => {
             name: "sedan TEST4",
             description: "Carro alogando e baixo TEST4"
         }).set({
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${refresh_token}`
         })
 
         const response = await request(app).get("/categories")

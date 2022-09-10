@@ -10,7 +10,7 @@ describe("Create Category Controller", () => {
     })
 
     it("should be able to create a new category", async () => {
-        const { body: { token } } = await request(app).post("/sessions").send({
+        const { body: { refresh_token } } = await request(app).post("/sessions").send({
             email: "admin@rentx.com",
             password: config.password
         })
@@ -19,14 +19,14 @@ describe("Create Category Controller", () => {
             name: "sedan TEST2",
             description: "Carro alogando e baixo TEST2"
         }).set({
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${refresh_token}`
         })
 
         expect(response.status).toBe(201)
     })
 
     it("should not be able to create a new category with existent name", async () => {
-        const { body: { token } } = await request(app).post("/sessions").send({
+        const { body: { refresh_token } } = await request(app).post("/sessions").send({
             email: "admin@rentx.com",
             password: config.password
         })
@@ -35,13 +35,13 @@ describe("Create Category Controller", () => {
             name: "sedan TEST 3",
             description: "Carro alogando e baixo TEST 3"
         }).set({
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${refresh_token}`
         })
         const response = await request(app).post("/categories").send({
             name: "sedan TEST 3",
             description: "Carro alogando e baixo TEST 3"
         }).set({
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${refresh_token}`
         })
 
         expect(response.status).toBe(400)
