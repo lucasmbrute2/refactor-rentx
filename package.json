@@ -11,6 +11,7 @@
         "@types/jsonwebtoken": "^8.5.8",
         "@types/nodemailer": "^6.4.5",
         "@types/uuid": "^8.3.4",
+        "aws-sdk": "^2.1218.0",
         "bcrypt": "^5.0.1",
         "csv-parse": "^5.2.2",
         "dayjs": "^1.11.4",
