@@ -1,5 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { v4 as uuid } from "uuid"
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Car } from "./Car";
 
 @Entity()
@@ -13,7 +12,7 @@ export class CarImage {
     @Column()
     image_name!: string;
 
-    @Column()
+    @CreateDateColumn()
     created_at!: Date;
 
     constructor() {
