@@ -20,8 +20,8 @@ export class UpdateUserAvatarUseCase {
     async execute({ user_id, avatar_file }: IRequest) {
         const user = await this.userRepository.findByID(user_id)
 
+        if (user?.avatar) await this.storageProvider.delete(user.avatar, "avatar");
 
-        if (user?.avatar) await this.storageProvider.delete(user.avatar, "avatar")
         await this.storageProvider.save(avatar_file, "avatar")
 
         if (!user) throw new AppError("User not found.");
