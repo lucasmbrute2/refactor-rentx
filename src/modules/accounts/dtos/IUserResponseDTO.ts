@@ -4,4 +4,5 @@ export interface IUserResponseDTO {
     id: number;
     avatar: string;
     driver_license: string;
+    avatar_url(): string | null;
 }
