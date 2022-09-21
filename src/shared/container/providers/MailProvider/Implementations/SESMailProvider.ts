@@ -9,7 +9,7 @@ export class SESMailProvider extends MailProvider {
         super()
         const ses = new aws.SES({
             apiVersion: "2010-12-01",
-            region: process.env.AWS_BUCKET_REGION,
+            region: process.env.AWS_REGION,
         })
 
         this.client = nodemailer.createTransport({

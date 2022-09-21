@@ -1,10 +1,9 @@
 import { getTestMessageUrl, Transporter } from "nodemailer";
-import { injectable } from "tsyringe";
 import { IMailProvider } from "../IMailProvider";
 import fs from "fs";
 import Handlebars from "handlebars";
+import { AppError } from "@shared/errors/AppError";
 
-@injectable()
 export class MailProvider implements IMailProvider {
     public client: Transporter | Falsy;
 
@@ -16,14 +15,18 @@ export class MailProvider implements IMailProvider {
 
         const message = {
             to,
-            from: "Rentx <noreplay@rentx.com.br>",
+            from: "Rentx <lucasmbrute620@gmail.com>",
             subject,
             html: templateHMTL
         }
 
         //@ts-ignore
         this.client.sendMail(message, (err, info) => {
-            console.log('Message sent: %s', info.messageId);
+            if (err) {
+                throw new Error(err);
+            }
+
+            console.log('Message sent: %s', info?.messageId);
             // Preview only available when sending through an Ethereal account
             console.log('Preview URL: %s', getTestMessageUrl(info));
         })
