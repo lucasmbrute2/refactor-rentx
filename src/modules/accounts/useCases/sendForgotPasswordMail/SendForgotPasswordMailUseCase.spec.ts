@@ -28,7 +28,9 @@ describe("Send forgot mail", () => {
             email: "email TEST",
             name: "name TEST",
             password: "123467",
-            avatar: null
+            avatar: null,
+            avatar_url: () => "avatar"
+
         })
 
         await sendForgotPasswordMailUseCase.execute("email TEST");
