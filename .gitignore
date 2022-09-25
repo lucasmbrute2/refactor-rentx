@@ -6,3 +6,4 @@ postgres-data/
 .env
 temp/
 coverage/
+dist/
