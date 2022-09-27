@@ -6,9 +6,11 @@ import "../../container";
 import { router } from "./routes/index"
 import { AppError } from "../../errors/AppError";
 import upload from "@configs/uploads/upload";
+import cors from "cors"
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 app.use(router);
 app.use("/avatar", express.static(`${upload.tmpFolder}/avatar`));
 app.use("/avatar", express.static(`${upload.tmpFolder}/cars`));
