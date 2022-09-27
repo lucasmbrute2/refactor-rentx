@@ -17,7 +17,6 @@ export const AppDataSource = new DataSource({
     username: dontenv.database.databaseUsername,
     password: dontenv.database.databasePassword,
     database: process.env.NODE_ENV === "test" ? dontenv.database.databaseNameTEST : dontenv.database.databaseName,
-    logging: true,
     synchronize: true,
     entities: [Category, Specification, Users, Car, CarImage, Rental, UserTokens],
     migrations,
