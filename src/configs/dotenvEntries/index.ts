@@ -15,5 +15,9 @@ export default {
         expires_in_refresh_token: "30d" as string
     },
     password: process.env.ADMIN_PASSWORD ?? "admin",
-    forgotUrl: process.env.FORGOT_MAIL_URL
+    forgotUrl: process.env.FORGOT_MAIL_URL,
+    redis: {
+        host: process.env.REDIS_HOST,
+        port: process.env.REDIS_PORT
+    }
 }
