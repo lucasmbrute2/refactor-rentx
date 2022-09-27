@@ -7,8 +7,10 @@ import { router } from "./routes/index"
 import { AppError } from "../../errors/AppError";
 import upload from "@configs/uploads/upload";
 import cors from "cors"
+import { rateLimiterMiddleware } from "./middlewares/rateLimiter";
 
 const app = express();
+app.use(rateLimiterMiddleware);
 app.use(express.json());
 app.use(cors())
 app.use(router);
