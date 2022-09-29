@@ -6,6 +6,8 @@
     "author": "Lucas Dantas <lucasmbrute614@gmail.com>",
     "license": "MIT",
     "dependencies": {
+        "@sentry/node": "^7.14.0",
+        "@sentry/tracing": "^7.14.0",
         "@types/bcrypt": "^5.0.0",
         "@types/jest": "^28.1.6",
         "@types/jsonwebtoken": "^8.5.8",
